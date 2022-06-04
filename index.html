@@ -1,0 +1,74 @@
+<html>
+<header>
+    <title>Case</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</header>
+
+<body>
+    <p class="eficensy">Добро пожаловать на сайт для открытия дизайн кейсов!<br> Это кейс класса case-1 и из него тебе может выпасть:<br> 1. Обычный предмет с шансом 35% <br> 2. Необычный предмет с шансом 25% <br> 3. Редкий предмет с шансом 15% <br> 4. Супер редкий предмет с шансом 10% <br>  5. Эпический предмет с шансом 5% <br>  6. Легендарный предмет с шансом 0.01%  </p>
+    <div class="case">
+        <a class="case-button"id="case-1">Get opend your first case!</a>
+        <a class="case-button" onclick="case_open()">Открыть</a>
+    </div>
+</body>
+
+<script>
+
+    function rand(min, max) {
+        ming = Math.ceil(min);
+        maxg = Math.floor(max);
+        let rand = Math.floor(Math.random() * (maxg - ming)) + ming;
+        return rand;
+    }
+
+    function case_open() {
+        ef = rand(1, 1000)
+        if(ef >= 1 && ef <= 250){ // 1 кейс-лут "необычный" 25%
+            status = "uncommon"
+        }
+        else if(ef >= 25 && ef <= 400){ // 2 кейс-лут "редкий" 15%
+            status = "rare"
+        }
+        else if(ef >= 401 && ef <= 500){ // 3 кейс-лут "супер редкий" 10%
+            status = "super rare"
+        }
+        else if(ef >= 501 && ef <= 950){ // 4 кейс-лут "обычный" 35%
+            status = "common"
+        }
+        else if(ef >= 951 && ef <= 998){ // 5 кейс-лут "эпический" 5%
+            status = "epic"
+        }
+        else if(ef >= 999 && ef <= 1000){ // 6 кейс-лут "легендарный" 0.1%
+            status = "legendar"
+        }
+        ef = ""
+        result(status);
+    }
+
+    function result(main_status){
+        status = main_status
+        res = "You get have are " + status + " loot!"
+        if(status == 'uncommon'){
+            document.getElementById("case-1").style.backgroundColor="orange";
+        }
+        else if(status == 'common'){
+            document.getElementById("case-1").style.backgroundColor="red";
+        }
+        else if(status == 'rare'){
+            document.getElementById("case-1").style.backgroundColor="blue";
+        }
+        else if(status =='super rare'){
+            document.getElementById("case-1").style.backgroundColor="green";
+        }
+        else if(status == 'epic'){
+            document.getElementById("case-1").style.backgroundColor="violet";
+        }
+        else if(status == 'legendar'){
+            document.getElementById("case-1").style.backgroundColor="gold";
+        }
+        document.getElementById("case-1").innerText = res;
+    }
+
+</script>
+
+</html>
